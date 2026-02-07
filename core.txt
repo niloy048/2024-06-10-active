@@ -339,9 +339,9 @@ def thread_supervisor():
 # 🔄 স্টার্টআপ
 # ======================
 
-if __name__ == "__main__":
-    threading.Thread(target=memory_cleaner, daemon=True).start()
-    threading.Thread(target=thread_supervisor, daemon=True).start()
-    
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)
+# সরাসরি থ্রেডগুলো এবং ফ্লাস্ক রান করা (if __name__ == "__main__": বাদ দেওয়া হয়েছে)
+threading.Thread(target=memory_cleaner, daemon=True).start()
+threading.Thread(target=thread_supervisor, daemon=True).start()
+
+port = int(os.environ.get("PORT", 5000))
+app.run(host='0.0.0.0', port=port)
